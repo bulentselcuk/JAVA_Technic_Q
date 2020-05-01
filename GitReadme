@@ -1,0 +1,15 @@
+
+Cursor class ile ayni yerde olmalı
+
+
+git config --global user.name "bulentselcuk"
+git config --global user.email "bulentselcuk@gmail.com"
+git init
+git add .
+git commit -m "yukleme basarili oldu"
+git remote add origin https://github.com/bulentselcuk/GitHubYeniProje.git
+git push -u origin master
+
+
+Bak
+open .git
