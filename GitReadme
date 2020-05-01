@@ -1,6 +1,4 @@
-
-Cursor class ile ayni yerde olmalı
-
+GIT COMMENT
 
 git config --global user.name "bulentselcuk"
 git config --global user.email "bulentselcuk@gmail.com"
@@ -13,3 +11,54 @@ git push -u origin master
 
 Bak
 open .git
+
+=================================
+Git Conflict
+
+Bir dosyayı iki kisi değiştirirse
+
+Git pull
+Once biri değiştirdi mesajı alınır
+Git add .
+Git commit -m “….”
+Git pull
+Charisma goruldu  mesajı
+
+Dosyayi sec menuden git-> resolve conflict
+
+Click. Merge
+git add .
+Git commit -m “fixed”
+Git push
+
+===================================
+Download any project from GitHub
+
+git clone https://github.com/CybertekSchool/Summer2019OnlineCucumberSelenium.git
+===================================
+
+GIT BRANCH COMMANDS
+
+make new branch —> git branch sdet1
+check branch—>	git branch
+			* master
+  			sdet1
+make new branch again —> git branch sdet2
+check branch—>	git branch
+			* master
+  			 sdet1
+  			sdet2
+Del branch—>    git branch -D sdet1
+check branch—>	git branch
+			* master
+  			sdet2
+
+Switch branch —> git checkout sdet2
+check branch—>	git branch
+			 master
+  			* sdet2
+git checkout sdet
+Switched to branch 'sdet'
+
+Ve git push --set-upstream origin sdet2  sadece bunu ekler….
+=====================================
