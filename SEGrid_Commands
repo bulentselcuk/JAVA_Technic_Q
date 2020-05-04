@@ -1,0 +1,44 @@
+#Jenkins
+clean test -P Smoke
+
+# Selenium Grid
+clean test -Dbrowser=chrome-remote -P Smoke
+
+clean test -Dbrowser=chrome-remote -P Regression -q
+
+==========================================
+
+SE Grid Commands
+——————————————
+Open Terminal
+
+
+cd ~/Downloads
+
+Select server and Click server
+
+chmod 400 myserver.pem
+ssh -i "myserver.pem" ec2-user@ec2-18-212-126-248.compute-1.amazonaws.com
+
+Yes
+
+ __|  __|_  )
+       _|  (     /   Amazon Linux AMI // Connected server…
+      ___|\___|___|
+
+cd grid
+docker-compose up -d // to Open
+docker-compose down  // to Close
+docker-compose scale chrome=10  // more than one to Open
+docker-compose ps  // The show to open browsers
+
+
+Remote Test by SE Grid
+
+Clean test -Dbrowser=chrome-remote -P Regression -q
+
+
+
+
+
+
