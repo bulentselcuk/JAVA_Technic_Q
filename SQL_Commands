@@ -1,92 +1,87 @@
 SELECT *
 FROM employees;
-
+​
 SELECT first_name 
 FROM employees;
-
+​
 --to describe table. It shows column names, are they nullable and data type
 DESCRIBE employees;
-
+​
 SELECT *
 FROM employees
 WHERE salary > 10000
 ORDER BY salary;
-
+​
 -- ; indeidcates end of query 
-
+​
 SELECT *
 FROM employees
 WHERE salary > 10000
 ORDER BY salary DESC;
-
+​
 SELECT *
 FROM employees
 ORDER BY first_name;
-
+​
 -- get all employees with salary higher than 10000 and order them by first name in descending order (z-a)
 SELECT *
 FROM employees
 WHERE salary > 10000
 ORDER BY 2 DESC; 
-
+​
 -- get name and salary multiplied by commission from employees where commissions not null
 SELECT first_name, (salary * commission_pct) as Commission
 FROM employees
 WHERE commission_pct IS NOT null;
-
+​
 SELECT first_name || ' ' || last_name as full_name
 FROM employees;
---get annual salary
-SELECT first_name||' '||last_name "full_name", salary *12 as annual_salary
+​
+-- get annual salary
+SELECT first_name||' '||last_name AS "full_name", salary * 12 as annual_salary
+FROM employees;
+​
+-- as = AS, same thing as well as SELECT = select, FROM = from
+-- salary is given montly based, slary * 12 = annual salary
+-- 52 weeks in the year and 40 hours in the week
+-- ROUND function is used to round numbers with decimal points ROUND(number, number_of_decimals)
+SELECT first_name||' '||last_name AS "full_name", ROUND(salary * 12/52/40, 2) AS "hourly_rate"
 FROM employees
 ORDER BY 2 DESC;
-
-SELECT first_name||' '||last_name "full_name", ROUND(salary * 12/52/40, 2) AS "hourly_rate"
-FROM employees
-ORDER BY 2;
-
+​
+--lower - toLowerCase() in java
 SELECT first_name, last_name, LOWER(email) || '@gmail.com' as "email"
 FROM employees;
-
-SELECT first_name, last_name, UPPER(email) || '@gmail.com' as "email"
+​
+-- upper - toUperCase() in java
+SELECT first_name, last_name, UPPER(email || '@gmail.com') as "email"
 FROM employees;
--- INITCAP - Capitalize first character in string
+​
+--INITCAP - capitalize first charater in string
+​
 SELECT first_name, last_name, INITCAP(email) || '@gmail.com' as "email"
 FROM employees;
-
--- finding high salary  interview question
+​
 SELECT salary
 FROM employees
-WHERE rownum <= 1
+WHERE rownum <=2
 ORDER BY salary ASC;
+​
+-- find 2nd highest salary
+-- MAX(Col_name) max value
+-- AND is used to combine filters 
+-- (SELECT MAX(salary) FROM employees) - inner query
+SELECT salary 
+FROM employees
+WHERE rownum = 1 AND salary < (SELECT MAX(salary) FROM employees)
+ORDER BY salary DESC;
 
 SELECT salary
 FROM employees
-WHERE rownum =1 AND salary < (SELECT MAX (salary) FROM employees)
-ORDER BY salary DESC;
-
-SELECT first_name||' '||last_name||' '||salary as full_name
-FROM employees
-WHERE rownum=1 AND salary <(SELECT MAX (salary) FROM employees)
-ORDER BY salary DESC;
-
-SELECT first_name||' '||last_name||' '||salary as full_name
-FROM employees
-WHERE rownum=1 AND salary >(SELECT MIN (salary)FROM employees)
+WHERE rownum <=5
 ORDER BY salary ASC;
 
-SELECT first_name, last_name
+SELECT first_name, last_name, salary, job_id, LOWER(email) || '@gmail.com' as "email"
 FROM employees
-ORDER BY first_name ASC;
-
-SELECT first_name, last_name
-FROM employees
-ORDER BY first_name DESC;
-
-SELECT first_name, last_name
-FROM employees
-ORDER BY last_name DESC;
-
-SELECT first_name, last_name, LOWER(email) || '@gmail.com' as "email"
-FROM employees
-ORDER BY last_name ASC;
+WHERE rownum <=5
+ORDER BY salary DESC;
